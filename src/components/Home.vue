@@ -73,6 +73,7 @@ export default {
   methods: {
     logout() {
       window.sessionStorage.clear()
+      window.localStorage.removeItem('goods_id')
       this.$router.push('/login')
     },
     // 获取所有的菜单
