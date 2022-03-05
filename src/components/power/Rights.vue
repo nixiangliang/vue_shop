@@ -47,7 +47,7 @@ export default {
       if (res.meta.status !== 200) {
         return this.$message.error('获取权限列表失败！')
       }
-      // console.log(res.data)
+      console.log(res.data)
       this.rightsList = res.data
       this.rightsLevel = res.data.level
     }

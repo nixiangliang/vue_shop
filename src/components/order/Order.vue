@@ -36,7 +36,7 @@
           </template>
         </el-table-column>
         <el-table-column label="操作">
-          <template slot-scope="">
+          <template slot-scope="{}">
             <el-button size="mini" type="primary" icon="el-icon-edit" @click="showBox"></el-button>
             <el-button size="mini" type="success" icon="el-icon-location" @click="showProgressBox"></el-button>
           </template>

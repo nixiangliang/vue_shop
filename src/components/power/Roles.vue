@@ -17,7 +17,7 @@
       </el-row>
 
       <!-- 角色列表区域 -->
-      <el-table :data="rolesList" border stripe>
+      <el-table :data="rolesList" border stripe row-key="id">
         <!-- 展开列 -->
         <el-table-column type="expand">
           <template slot-scope="scope">
@@ -171,7 +171,7 @@ export default {
         return this.$message.error('获取角色列表数据失败！')
       }
       this.rolesList = res.data
-      // console.log(this.rolesList)
+      console.log(this.rolesList)
     },
     // 根据Id删除对应的权限
     async removeRightById(role, rightId) {

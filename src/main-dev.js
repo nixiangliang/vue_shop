@@ -15,18 +15,31 @@ import 'quill/dist/quill.core.css' // import styles
 import 'quill/dist/quill.snow.css' // for snow theme
 import 'quill/dist/quill.bubble.css' // for bubble theme
 
+// 导入 nprogress 包对应的JS和CSS，实现进度条效果
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
 // 导入 axios
 import axios from 'axios'
 // 配置请求根路径
 axios.defaults.baseURL = 'https://lianghj.top:8888/api/private/v1/'
 // 配置请求拦截器
+// 在 request 拦截其中，展示进度条 NProgress.start()
 axios.interceptors.request.use((config) => {
   // 在 API 接口的请求头中使用 Authorization 字段提供 token 令牌
   // console.log(config)
+  NProgress.start()
   config.headers.Authorization = window.sessionStorage.getItem('token')
   // 在最后必须 return config
   return config
 })
+// 在 response 拦截器中，隐藏进度条 NProgress.done()
+axios.interceptors.response.use((config) => {
+  NProgress.done()
+  // 在最后必须 return config
+  return config
+})
+
 // 全局挂载 axios
 Vue.prototype.$http = axios
 
